@@ -8,7 +8,11 @@ String[] distributions = [
 			// 'debian:forky', // Disabled: Forky is still unstable/research-only.
 			//                 // The full Debian package ecosystem is not yet available for Forky.
 			//                 // Re-enable once the stack builds cleanly for Forky.
-			'ubuntu:jammy',
+			// 'ubuntu:jammy', // Disabled: jammy's python3-setuptools (59.6) predates
+			//                 // PEP 621 support, so it builds an UNKNOWN-0.0.0 wheel from
+			//                 // joserfc's [project] metadata and pybuild aborts. Nothing
+			//                 // consumes python3-joserfc on jammy: the repo publishes
+			//                 // python3-fastmcp only for trixie.
 			'ubuntu:noble',
 			'ubuntu:resolute',
 ]
