@@ -1,0 +1,12 @@
+python-joserfc (1.5.0-1) unstable; urgency=medium
+
+  * Initial Debian packaging of upstream 1.5.0.
+  * Supersedes the distribution's python3-joserfc 1.1.0, which lacks the
+    RFC 9864 Ed25519 and Ed448 signature algorithms. fastmcp 4.0.0b3
+    requires joserfc >= 1.5.0 and its JWT provider accepts Ed25519 and
+    Ed448; against 1.1.0 only the legacy EdDSA name is registered.
+  * Pinned to 1.5.0 on purpose: upstream 1.6.0 and later require
+    cryptography >= 45.0.1, while the archive provides 43.0.0. Revisit
+    once a newer python3-cryptography is available.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Thu, 20 Aug 2026 19:03:46 +0200

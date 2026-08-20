@@ -1,0 +1,36 @@
+Source: python-joserfc
+Section: python
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ pybuild-plugin-pyproject,
+ python3-all,
+ python3-setuptools,
+Standards-Version: 4.7.0
+Homepage: https://jose.authlib.org/
+Vcs-Git: https://github.com/Vitexus/python-joserfc.git
+Vcs-Browser: https://github.com/Vitexus/python-joserfc
+Rules-Requires-Root: no
+
+Package: python3-joserfc
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ python3-cryptography,
+Description: Python library for JOSE RFCs - JWS, JWE, JWK, JWA, JWT
+ joserfc implements the JOSE family of specifications: JSON Web Signature
+ (JWS), JSON Web Encryption (JWE), JSON Web Key (JWK), JSON Web Algorithms
+ (JWA) and JSON Web Token (JWT).
+ .
+ This build deliberately tracks upstream 1.5.0, the release that added the
+ RFC 9864 Ed25519 and Ed448 signature algorithms required by the FastMCP
+ JWT authentication provider. Upstream 1.6.0 and later require
+ cryptography >= 45.0.1, which is newer than the version available in the
+ distribution archive, so bumping further would pull in a rebuild of a
+ core cryptographic package.
+ .
+ This package provides the Python 3 library.
