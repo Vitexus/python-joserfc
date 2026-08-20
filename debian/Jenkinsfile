@@ -2,18 +2,19 @@
 
 // Current version of this Pipeline https://github.com/VitexSoftware/BuildImages/blob/main/Test/Jenkinsfile
 
+// Build targets match the only consumer of this package, python3-fastmcp,
+// which builds for debian:trixie and ubuntu:resolute (see its
+// debian/Jenkinsfile); python3-uncalled-for uses the same pair. Building
+// wider just publishes packages nothing installs.
+//
+// debian:forky disabled: still unstable/research-only, the full Debian
+// package ecosystem is not yet available for it.
+//
+// ubuntu:jammy disabled: its python3-setuptools (59.6) predates PEP 621, so
+// pybuild builds an UNKNOWN-0.0.0 wheel from joserfc's [project] metadata
+// and aborts. Older Debian/Ubuntu releases also ship their own joserfc.
 String[] distributions = [
-			'debian:bookworm',
 			'debian:trixie',
-			// 'debian:forky', // Disabled: Forky is still unstable/research-only.
-			//                 // The full Debian package ecosystem is not yet available for Forky.
-			//                 // Re-enable once the stack builds cleanly for Forky.
-			// 'ubuntu:jammy', // Disabled: jammy's python3-setuptools (59.6) predates
-			//                 // PEP 621 support, so it builds an UNKNOWN-0.0.0 wheel from
-			//                 // joserfc's [project] metadata and pybuild aborts. Nothing
-			//                 // consumes python3-joserfc on jammy: the repo publishes
-			//                 // python3-fastmcp only for trixie.
-			'ubuntu:noble',
 			'ubuntu:resolute',
 ]
 
